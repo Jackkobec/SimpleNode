@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 
 /**
- * Created by Стас on 15.09.2016.
+ * TestSimpleNodeActions junit tests
  */
 public class TestSimpleNodeActions {
 
@@ -68,8 +68,8 @@ public class TestSimpleNodeActions {
         assertEquals(true, snu.nodeEquals(expected, actual));
 
         //all reverse 2
-        Node TestNode2 = snu.createNodeR("A","A","B","B","C","C","D","D","E","E");
-        expected = snu.createNodeR("E","E","D","D","C","C","B","B","A","A");
+        Node TestNode2 = snu.createNodeR("A", "A", "B", "B", "C", "C", "D", "D", "E", "E");
+        expected = snu.createNodeR("E", "E", "D", "D", "C", "C", "B", "B", "A", "A");
         actual = snu.reverse(TestNode2);
         assertEquals(true, snu.nodeEquals(expected, actual));
 
@@ -80,5 +80,27 @@ public class TestSimpleNodeActions {
         assertEquals(true, snu.nodeEquals(expected, actual));
 
     }
+
+    @Test
+    public void testReverseString() {
+        SimpleNodeUtils snu = new SimpleNodeUtils();
+        String testStr = "A B C D E";
+
+        //Test stringReverse
+        String expected = "E D C B A";
+        String actual = snu.stringReverse(testStr);
+        assertEquals(expected, actual);
+
+        //Test stringReverse
+        expected = "E D C B A";
+        actual = snu.reverseStringRec(testStr);
+        assertEquals(expected, actual);
+
+        //Test stringReverse
+        expected = "E D C B A";
+        actual = snu.reverseStringRecWithChatAt(testStr);
+        assertEquals(expected, actual);
+    }
+
 
 }

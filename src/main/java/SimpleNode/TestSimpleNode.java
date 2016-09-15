@@ -51,5 +51,18 @@ public class TestSimpleNode {
         Node TestNode2 = snu.createNodeR("A", "A", "B", "B", "C", "C", "D", "D", "E", "E");
         testnode = snu.reverse(TestNode2);
         System.out.println(snu.toStringN(testnode));
+        System.out.println("=============================");
+        System.out.println("=============================");
+
+        String str = "abcde";
+        System.out.println(str);
+        System.out.println(snu.stringReverse(str));
+
+
+        System.out.println("=======");
+        System.out.println(snu.stringReverse(str));
+        System.out.println("=======");
+        System.out.println(snu.reverseStringRec(str));
+
     }
 }

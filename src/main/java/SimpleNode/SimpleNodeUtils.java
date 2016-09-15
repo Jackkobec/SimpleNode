@@ -194,7 +194,56 @@ public class SimpleNodeUtils {
             System.out.println(toStringN(start));
         }
         return start;
+    }
 
+    /**
+     * stringReverse with classes StringBuffer,
+     * StringBuilder usage possible too
+     *
+     * @param str
+     * @return
+     */
+    public String stringReverse(String str) {
+        if (str.isEmpty()) {
+            return null;
+        }
+        //StringBuffer \ StringBuilder method reverse()
+        return new StringBuffer(str).reverse().toString();
+    }
+
+    /**
+     * reverseStringRec with recursion
+     * <p>
+     * Last elem from input string add recursive call this method
+     *
+     * @param str
+     * @return
+     */
+    public String reverseStringRec(String str) {
+        //cant return null - its fail the result stuing
+        if (str.isEmpty()) {
+            return "";
+        }
+        //Last element from the input string str
+        return str.substring(str.length() - 1)
+                //append results from recursive call this method
+                + reverseStringRec(str.substring(0, str.length() - 1));
+    }
+
+    /**
+     * reverseStringRecWithChatAt
+     *
+     * @param str
+     * @return
+     */
+    public String reverseStringRecWithChatAt(String str) {
+        if (str.isEmpty()) {
+            return "";
+        }
+        //Lasr elem from input string str
+        return str.charAt(str.length() - 1)
+                //append results from recursive call this method
+                + reverseStringRecWithChatAt(str.substring(0, str.length() - 1));
     }
 
 
