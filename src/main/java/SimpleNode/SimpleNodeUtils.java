@@ -17,6 +17,18 @@ public class SimpleNodeUtils {
         return sb.toString();
     }
 
+    public String toStringN2(Node head) {
+
+        StringBuilder sb = new StringBuilder();
+        Node lastPointer = head;
+
+        while (lastPointer != null) {
+            sb.append(lastPointer.getValue() + "->");
+            lastPointer = lastPointer.getNext();
+        }
+        sb.append(" null");
+        return sb.toString();
+    }
 
     public Node createNodeR(Object... mas) {
 
@@ -247,4 +259,131 @@ public class SimpleNodeUtils {
     }
 
 
+    public Node reverseNode(Node head) {
+        if (head.getNext() == null && null == head.getValue()) {
+            throw new IncorrectNodeExeption("Bad Node");
+        }
+        if (head.getNext() == null && head.getValue() != null) {
+            return head;
+        }
+        Node next = null;
+        Node newHead = null;
+
+        while (head != null) {
+            next = head.getNext();
+            System.out.println();
+            System.out.println("next:    " + toStringN2(next));
+            head.setNext(newHead);
+            System.out.println("head:    " + toStringN2(head));
+            newHead = head;
+            System.out.println("newHead: " + toStringN2(newHead));
+            head = next;
+
+        }
+        return newHead;
+    }
+
+
+/*    public Node reverseNode2(Node head) {
+        if (head.getNext() == null && null == head.getValue()) {
+            throw new IncorrectNodeExeption("Bad Node");
+        }
+        if (head.getNext() == null && head.getValue() != null) {
+            return head;
+        }
+        Node next = null;
+        Node newHead = null;
+
+        while (head != null) {//move form A
+            next = head.getNext(); // запомним в переменную next следущий heda т.к он затрется
+
+            head.setNext(newHead); // поставим у head следующего равного null (это наш newHead, объявленный до цикла)
+
+            newHead = head; //новая цепочка с newHead, которая возьмет значение head = A и его сысылка на следющий будет null т.к. в
+            //в предыдущем шаге мы переставили у head ссылку на null
+            //Чтобы не потерять исходную цепочку мы переприсваеваем head c ссылкой на след null -> в newHead и его будем возпращать
+            //A head в следующем действии возьмет ранее запомненное зхначение next и кикл продолжится
+
+            head = next;// это итерация цикла
+        }
+        return newHead;
+    }*/
+
+    /**
+     * public Node reverseNodeAlg(Node head)
+     * Алгоритм реверса односвязного списка от Ани.
+     * <p>
+     * Я не буду расказывать, что делать если на вход придет список из 1 Ноды или она будет равна null. Смотрите проверки.
+     * <p>
+     * <p>
+     * 1.Создаем две дополнительные Ноды:
+     * - nextCicleElement = null - дополнительная Нода, для хранения следующего элемента в цикла, изначально null
+     * - newHead = null - дополнительная Нода, куда будет форсмироваться новая реверсивная цепочка и мы ёё будем возвращать
+     * 2.Проход циклом по списку начинаем с первого элемента = head. И будем идти пока он не станет равным null, что будет означать конец.
+     * while(head != null)
+     * 3.После входа в цикл с первую очередь необходимо запомнить следующий елемент цикла nextCicleElement
+     * т.к. он нам пригодится для итерации цикла. Значение этой переменной - это head.getNext()
+     * nextCicleElement = head.getNext();
+     * 4.Далее логика такова, что мы должны взять наш текущий элемент цикла - тоесть head и сделать чтобы он ссылался на null,
+     * тоесть его next = null. Но после такого действия мы потеряем всю цепочку т.к A смотрит на null (A -> null).
+     * Вот для этого нам и понадобится вторая дополнительная переменная newHead, которой мы присвоим значение head = A,
+     * у коготорого next null ( newHead = head  = (A -> null), смотри пункт 5
+     * 5.Формируем новую цепочку с newHead во главе. Записываем в newHead значение head из 4 пункта
+     * newHead = head  ( == A -> null)
+     * Теперь у нас в newHead новый список, в котором ( newHead = A -> null); Cюда и будет формироваться реверсивный список.
+     * 6. Оталось сделать итерацию цикла для перехода к следующему элементу. Текущий у нас head, но мы его обнуилили в пункте 4
+     * Поэтому берем head и делаем его равным nextCicleElement(помните мы его запомнили в 3 пункте сразу после начала цикла)
+     * head = nextCicleElement ( == head.getNext() , но head из начала цикла)
+     * <p>
+     * После чего за циклом возвращаем newHead, в котором сформируется реверсивная цепочка.
+     * <p>
+     * <p>
+     * <p>
+     * <p>
+     * Список для примера A -> B -> C -> D ,  тут исходными данными при первой итерации цикла будут:
+     * -head = A
+     * -head.getNext() = B
+     * -nextCicleElement = head.getNext() = B
+     * -newHead = A (A -> null)
+     *
+     * @param head
+     * @return
+     */
+    public Node reverseNodeAlg(Node head) {
+        if (head.getNext() == null && null == head.getValue()) {
+            throw new IncorrectNodeExeption("Bad Node");
+        }
+        if (head.getNext() == null && head.getValue() != null) {
+            return head;
+        }
+        Node nextCicleElement = null; //дополнительная переменная для хранения следующего елемента цикла пункт 1
+        Node newHead = null;          //дополнительная переменная для хранения новой реверсивной цепочки пункт 1
+
+        while (null != head) {
+            nextCicleElement = head.getNext(); //запомнили следующее значение для последующее итерации пункт 3
+            head.setNext(newHead);             //ставим чтобы head ссылался на null(т.к при первойитерации newHead = null) пункт 4
+            newHead = head;           //присваиввем newHead значение head == A -> null при первой итерации, полученое из предыдущего дейстия
+
+            head = nextCicleElement;           //итерация цикла, присваеваем head(а это текущий елемент цикла) nextCicleElement,
+                                               //который мы запомнили в начале цикла пункт 6
+
+        }
+        return newHead; //возвращаем новую цепочку
+    }
+
+
+ /*   public Node reverseNodeRec(Node head) {
+        if (head.getNext() == null && null == head.getValue()) {
+            throw new IncorrectNodeExeption("Bad Node");
+        }
+        if (head.getNext() == null && head.getValue() != null) {
+            return head;
+        }
+        return new Node(head.getValue(), )
+    }*/
+
+    private class IncorrectNodeExeption extends RuntimeException {
+        public IncorrectNodeExeption(String s) {
+        }
+    }
 }

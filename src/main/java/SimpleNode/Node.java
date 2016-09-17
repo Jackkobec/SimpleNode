@@ -1,7 +1,7 @@
 package SimpleNode;
 
 /**
- * Created by serhii on 05.09.16.
+ * Node class
  */
 public class Node {
     public final transient String testText = "NODE";

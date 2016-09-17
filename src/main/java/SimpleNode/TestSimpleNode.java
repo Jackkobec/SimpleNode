@@ -48,11 +48,11 @@ public class TestSimpleNode {
         testnode = snu.reverse(testnode);
         System.out.println(snu.toStringN(testnode));
 
-        Node TestNode2 = snu.createNodeR("A", "A", "B", "B", "C", "C", "D", "D", "E", "E");
-        testnode = snu.reverse(TestNode2);
-        System.out.println(snu.toStringN(testnode));
-        System.out.println("=============================");
-        System.out.println("=============================");
+//        Node TestNode2 = snu.createNodeR("A", "A", "B", "B", "C", "C", "D", "D", "E", "E");
+//        testnode = snu.reverse(TestNode2);
+//        System.out.println(snu.toStringN(testnode));
+//        System.out.println("=============================");
+//        System.out.println("=============================");
 
         String str = "abcde";
         System.out.println(str);
@@ -63,6 +63,13 @@ public class TestSimpleNode {
         System.out.println(snu.stringReverse(str));
         System.out.println("=======");
         System.out.println(snu.reverseStringRec(str));
+
+        testnode = snu.createNodeR("A", "B", "C");
+        System.out.println(snu.toStringN2(testnode));
+
+        testnode = snu.reverseNodeAlg(testnode);
+        System.out.println(snu.toStringN(testnode));
+
 
     }
 }
