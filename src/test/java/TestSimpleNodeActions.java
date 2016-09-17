@@ -102,5 +102,28 @@ public class TestSimpleNodeActions {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testReverseAlg() {
+        SimpleNodeUtils snu = new SimpleNodeUtils();
+        Node TestNode = snu.createNodeR("A", "B", "C", "D", "E");
 
+
+        //all reverse
+        Node expected = snu.createNodeR("E", "D", "C", "B", "A");
+        Node actual = snu.reverseNodeAlg(TestNode);
+        assertEquals(true, snu.nodeEquals(expected, actual));
+
+        //all reverse 2
+        Node TestNode2 = snu.createNodeR("A", "A", "B", "B", "C", "C", "D", "D", "E", "E");
+        expected = snu.createNodeR("E", "E", "D", "D", "C", "C", "B", "B", "A", "A");
+        actual = snu.reverseNodeAlg(TestNode2);
+        assertEquals(true, snu.nodeEquals(expected, actual));
+
+        //one - element reverse if equals
+        Node oneElemNode = snu.createNodeR("A");
+        expected = snu.createNodeR("A");
+        actual = snu.reverseNodeAlg(oneElemNode);
+        assertEquals(true, snu.nodeEquals(expected, actual));
+
+    }
 }
