@@ -354,7 +354,7 @@ public class SimpleNodeUtils {
             return null;
         }
         if (null == head.getValue() && null == head.getNext()) {
-            throw new IncorrectNodeExeption("Bad Node");
+            throw new NullPointerException("Bad Node");
         }
         if (null == head.getNext() && null != head.getValue()) {
             return head;
