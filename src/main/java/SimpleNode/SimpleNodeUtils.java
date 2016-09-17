@@ -350,10 +350,13 @@ public class SimpleNodeUtils {
      * @return
      */
     public Node reverseNodeAlg(Node head) {
-        if (head.getNext() == null && null == head.getValue()) {
+        if (null == head) {
+            return null;
+        }
+        if (null == head.getValue() && null == head.getNext()) {
             throw new IncorrectNodeExeption("Bad Node");
         }
-        if (head.getNext() == null && head.getValue() != null) {
+        if (null == head.getNext() && null != head.getValue()) {
             return head;
         }
         Node nextCicleElement = null; //дополнительная переменная для хранения следующего елемента цикла пункт 1
@@ -365,7 +368,7 @@ public class SimpleNodeUtils {
             newHead = head;           //присваиввем newHead значение head == A -> null при первой итерации, полученое из предыдущего дейстия
 
             head = nextCicleElement;           //итерация цикла, присваеваем head(а это текущий елемент цикла) nextCicleElement,
-                                               //который мы запомнили в начале цикла пункт 6
+            //который мы запомнили в начале цикла пункт 6
 
         }
         return newHead; //возвращаем новую цепочку

@@ -64,10 +64,11 @@ public class TestSimpleNode {
         System.out.println("=======");
         System.out.println(snu.reverseStringRec(str));
 
-        testnode = snu.createNodeR("A", "B", "C");
+        testnode = snu.createNodeR("A");
         System.out.println(snu.toStringN2(testnode));
-
+        testnode = null;
         testnode = snu.reverseNodeAlg(testnode);
+
         System.out.println(snu.toStringN(testnode));
 
 
