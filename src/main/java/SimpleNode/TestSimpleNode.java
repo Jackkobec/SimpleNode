@@ -64,13 +64,22 @@ public class TestSimpleNode {
         System.out.println("=======");
         System.out.println(snu.reverseStringRec(str));
 
-        testnode = snu.createNodeR("A");
+        testnode = snu.createNodeR("A", "B", "C", "D", "E");
         System.out.println(snu.toStringN2(testnode));
-        testnode = null;
-        testnode = snu.reverseNodeAlg(testnode);
+
+        testnode = snu.reverseNodeRec(testnode);
 
         System.out.println(snu.toStringN(testnode));
-
-
+        System.out.println("=======");
+        System.out.println("=======");
+        System.out.println("=======");
+/**
+ * Test area
+ */
+       /* SimpleNodeUtils.OneNodeList one = new SimpleNodeUtils.OneNodeList();
+        SimpleNodeUtils.OneNodeList testnode2 =  one.createN("A", "B", "C", "D", "E");
+        System.out.println(one.toStringOneNode(testnode2));
+        testnode2.invertAll(testnode2);
+        System.out.println(one.toStringOneNode(testnode2));*/
     }
 }

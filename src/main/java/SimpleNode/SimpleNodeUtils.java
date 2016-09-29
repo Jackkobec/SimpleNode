@@ -261,7 +261,7 @@ public class SimpleNodeUtils {
 
     public Node reverseNode(Node head) {
         if (head.getNext() == null && null == head.getValue()) {
-            throw new IncorrectNodeExeption("Bad Node");
+            throw new NullPointerException("Bad Node");
         }
         if (head.getNext() == null && head.getValue() != null) {
             return head;
@@ -375,18 +375,71 @@ public class SimpleNodeUtils {
     }
 
 
- /*   public Node reverseNodeRec(Node head) {
-        if (head.getNext() == null && null == head.getValue()) {
-            throw new IncorrectNodeExeption("Bad Node");
+    public Node reverseNodeRec(Node head) {
+        if (null == head) {
+            return null;
         }
-        if (head.getNext() == null && head.getValue() != null) {
-            return head;
-        }
-        return new Node(head.getValue(), )
-    }*/
 
-    private class IncorrectNodeExeption extends RuntimeException {
-        public IncorrectNodeExeption(String s) {
-        }
+        return null;
     }
 }
+
+
+
+
+
+
+
+
+/**
+ * Test area
+ */
+   /* public static class OneNodeList {
+        OneNodeList next;
+        Object val;
+        public  OneNodeList(){
+
+        }
+        public  OneNodeList(Object val){
+            this.val = val;
+        }
+        public  OneNodeList(Object val, OneNodeList next){
+            this.val = val;
+            this.next = next;
+        }
+
+        public boolean hasNext() {
+            return next != null;
+        }
+        public OneNodeList createN(Object... mas) {
+
+            if (mas.length == 0) return null;
+            // if mas consist of more then 1 Object we create new Array for the next operations
+            Object[] masReduced = new Object[mas.length - 1];
+            // copy source Array from position 1 to the created Array on first position and created Array length
+            System.arraycopy(mas, 1, masReduced, 0, masReduced.length);
+            // call recursion with reduced Array
+            return new OneNodeList(mas[0], createN(masReduced));
+        }
+        public String toStringOneNode(OneNodeList head) {
+
+            StringBuilder sb = new StringBuilder();
+            OneNodeList lastPointer = head;
+
+            while (lastPointer != null) {
+                sb.append(lastPointer.val + "->");
+                lastPointer = lastPointer.next;
+            }
+            sb.append(" null");
+            return sb.toString();
+        }
+
+        public void invertAll(OneNodeList previous) {
+            if (this.hasNext()) {
+                this.next.invertAll(this);
+            }
+            this.next = previous;
+        }
+
+
+    }*/
