@@ -126,4 +126,21 @@ public class TestSimpleNodeActions {
         assertEquals(true, snu.nodeEquals(expected, actual));
 
     }
+
+    @Test
+    public void testAddToHead() {
+        SimpleNodeUtils snu = new SimpleNodeUtils();
+        Node TestNode = snu.createNodeR("A", "B", "C", "D", "E");
+        Node expected = snu.createNodeR("NewHead", "A", "B", "C", "D", "E");
+        Node actual = snu.addToHead(TestNode, new Node("NewHead", null));
+        assertEquals(true, snu.nodeEquals(expected, actual));
+    }
+    @Test
+    public void testAddToTail() {
+        SimpleNodeUtils snu = new SimpleNodeUtils();
+        Node TestNode = snu.createNodeR("A", "B", "C", "D", "E");
+        Node expected = snu.createNodeR("A", "B", "C", "D", "E","NewHead");
+        snu.addToTail(TestNode, new Node("NewHead", null));
+        assertEquals(true, snu.nodeEquals(expected, TestNode));
+    }
 }

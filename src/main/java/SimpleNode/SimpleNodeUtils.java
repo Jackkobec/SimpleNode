@@ -30,6 +30,23 @@ public class SimpleNodeUtils {
         return sb.toString();
     }
 
+    public Node addToHead(Node head, Node newHead){
+        if(null == head){
+            return newHead;
+        }
+        if(null == newHead){
+            return head;
+        }
+        return new Node(newHead.getValue(), head);
+    }
+
+    public void addToTail(Node head, Node newTail){
+        if (head.getNext() == null) {
+            head.setNext(newTail);
+        } else {
+            addToTail(head.getNext(), newTail);
+        }
+    }
     public Node createNodeR(Object... mas) {
 
         if (mas.length == 0) return null;
