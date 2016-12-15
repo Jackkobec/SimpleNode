@@ -17,28 +17,28 @@ public class TestSimpleNodeActions {
 
         //remove from 1st
         Node expected = snu.createNodeR("B", "C", "D", "E");
-        Node actual = snu.remove3(TestNode, "A");
+        Node actual = snu.removeWithRecursion(TestNode, "A");
         assertEquals(true, snu.nodeEquals(expected, actual));
 
         //remove from last
         expected = snu.createNodeR("A", "B", "C", "D");
-        actual = snu.remove3(TestNode, "E");
+        actual = snu.removeWithRecursion(TestNode, "E");
         assertEquals(true, snu.nodeEquals(expected, actual));
 
         //remove from middle
         expected = snu.createNodeR("A", "B", "C", "E");
-        actual = snu.remove3(TestNode, "D");
+        actual = snu.removeWithRecursion(TestNode, "D");
         assertEquals(true, snu.nodeEquals(expected, actual));
 
         //remove from middle yet
         expected = snu.createNodeR("A", "C", "D", "E");
-        actual = snu.remove3(TestNode, "B");
+        actual = snu.removeWithRecursion(TestNode, "B");
         assertEquals(true, snu.nodeEquals(expected, actual));
 
         //one-element node, try without removeParam
         Node oneElemNode = snu.createNodeR("A");
         expected = snu.createNodeR("A");
-        actual = snu.remove3(oneElemNode, "B");
+        actual = snu.removeWithRecursion(oneElemNode, "B");
         assertEquals(true, snu.nodeEquals(expected, actual));
         try {
             //Артефакт NullPointerException при сравнении с нулем т.к. в списке из одного елемента
@@ -47,7 +47,7 @@ public class TestSimpleNodeActions {
             //one-element node, try with removeParam
             oneElemNode = snu.createNodeR("A");
             expected = new Node(null);
-            actual = snu.remove3(oneElemNode, "A");
+            actual = snu.removeWithRecursion(oneElemNode, "A");
             assertEquals(true, actual.equals(new Node(null)));
 
         } catch (NullPointerException ignored) {

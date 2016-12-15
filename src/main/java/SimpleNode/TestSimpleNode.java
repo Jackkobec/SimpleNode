@@ -14,10 +14,17 @@ public class TestSimpleNode {
         SimpleNodeUtils snu = new SimpleNodeUtils();
         Node testnode = snu.createNodeR("A", "B", "C", "D", "E");
         System.out.println(snu.toStringN(testnode));
+
+
+
+        Node node = snu.reverseNodeRec(testnode);
+        System.out.println("resilt " + snu.toStringN(node));
+
+
 //        System.out.println("Тест addToHead циклом: ");
 //        testnode = snu.addToHead(testnode, new Node("NewHead", null));
-        snu.addToTail(testnode, new Node("NewHead", null));
-        System.out.println(snu.toStringN(testnode));
+//        snu.addToTail(testnode, new Node("NewHead", null));
+//        System.out.println(snu.toStringN(testnode));
 //        Node testnode = snu.createNodeR("A", "B", "C", "D", "E");
 //        System.out.println(snu.toStringN(testnode));
 //        System.out.println("=============================");
@@ -41,7 +48,7 @@ public class TestSimpleNode {
 //        System.out.println("=============================");
 //        testnode = snu.createNodeR("A", "B", "C", "D", "E");
 //        System.out.println(snu.toStringN(testnode));
-//        testnode = snu.remove3(testnode, "A");
+//        testnode = snu.removeWithRecursion(testnode, "A");
 //        System.out.println(snu.toStringN(testnode));
 //
 //        System.out.println("=============================");

@@ -30,23 +30,24 @@ public class SimpleNodeUtils {
         return sb.toString();
     }
 
-    public Node addToHead(Node head, Node newHead){
-        if(null == head){
+    public Node addToHead(Node head, Node newHead) {
+        if (null == head) {
             return newHead;
         }
-        if(null == newHead){
+        if (null == newHead) {
             return head;
         }
         return new Node(newHead.getValue(), head);
     }
 
-    public void addToTail(Node head, Node newTail){
+    public void addToTail(Node head, Node newTail) {
         if (head.getNext() == null) {
             head.setNext(newTail);
         } else {
             addToTail(head.getNext(), newTail);
         }
     }
+
     public Node createNodeR(Object... mas) {
 
         if (mas.length == 0) return null;
@@ -120,18 +121,28 @@ public class SimpleNodeUtils {
             return head.getNext();
         }
 
-        Node finded = null;
-        while (head.getNext() != null) {
-            if (head.getNext().getValue().equals(removeParam)) {
-                finded = head.getNext();
-                head.setNext(head.getNext().getNext());
-                return finded;
-            } else {
-                head = head.getNext();
+        Node curent = head;
+        while (curent.getNext() != null) {
+            Node next = curent.getNext();
+            if (next.getValue().equals(removeParam)) {
+                curent.setNext(next.getNext());
+                break;
             }
         }
-        return finded;
+
+        return null;
     }
+//    public void remove(Task task){
+//        Node currentNode=headOfStack;
+//        while (currentNode.getNextElement()!=null) {
+//            Node nextElement = currentNode.getNextElement();
+//            if (nextElement.getTask().equals(task)) {
+//                currentNode.setNextElement(nextElement.getNextElement);
+//                break;
+//            }
+//        }
+//
+//    }
 
     @Deprecated
     public Node remove2(Node head, Object removeParam) {
@@ -166,7 +177,7 @@ public class SimpleNodeUtils {
      * @param removeParam
      * @return
      */
-    public Node remove3(Node head, Object removeParam) {
+    public Node removeWithRecursion(Node head, Object removeParam) {
         //if one - element node
         if (null == head.getNext()) {
             //проверим этот елемент на соовестие к removeParam, веренем null, если да
@@ -178,7 +189,7 @@ public class SimpleNodeUtils {
         }
         //If in the first iteration we d'ont find the equals with removeParam - we build new Node where val = head.getValue()
         //end repeat this action recursive  until chain not finished
-        return new Node(head.getValue(), remove3(head.getNext(), removeParam));
+        return new Node(head.getValue(), removeWithRecursion(head.getNext(), removeParam));
     }
 
     public Node reverse(Node head) {
@@ -394,19 +405,24 @@ public class SimpleNodeUtils {
 
 
     public Node reverseNodeRec(Node head) {
-        if (null == head) {
-            return null;
+
+        if (head.getNext() == null) {
+            return head;
         }
 
-        return null;
+        Node savedHead = head;
+        Node savedHeadWithoutLast;
+
+        while (head.getNext() != null) {
+            head = head.getNext();
+        }
+        //savedHeadWithoutLast = this.removeWithRecursion(savedHead, head.getValue());
+        this.remove(savedHead, head);
+
+        //return new Node(head.getValue(), reverseNodeRec(savedHeadWithoutLast));
+        return new Node(head.getValue(), reverseNodeRec(savedHead));
     }
 }
-
-
-
-
-
-
 
 
 /**
