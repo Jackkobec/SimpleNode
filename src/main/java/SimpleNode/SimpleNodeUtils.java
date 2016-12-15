@@ -3,7 +3,9 @@ package SimpleNode;
 /**
  * SimpleNode Actions
  */
-public class SimpleNodeUtils {
+public class SimpleNodeUtils implements ISimpleNodeUtils {
+
+    @Override
     public String toStringN(Node head) {
         System.out.print("Head is = ");
         StringBuilder sb = new StringBuilder();
@@ -17,6 +19,7 @@ public class SimpleNodeUtils {
         return sb.toString();
     }
 
+    @Override
     public String toStringN2(Node head) {
 
         StringBuilder sb = new StringBuilder();
@@ -30,6 +33,7 @@ public class SimpleNodeUtils {
         return sb.toString();
     }
 
+    @Override
     public Node addToHead(Node head, Node newHead) {
         if (null == head) {
             return newHead;
@@ -40,6 +44,7 @@ public class SimpleNodeUtils {
         return new Node(newHead.getValue(), head);
     }
 
+    @Override
     public void addToTail(Node head, Node newTail) {
         if (head.getNext() == null) {
             head.setNext(newTail);
@@ -48,6 +53,7 @@ public class SimpleNodeUtils {
         }
     }
 
+    @Override
     public Node createNodeR(Object... mas) {
 
         if (mas.length == 0) return null;
@@ -59,6 +65,7 @@ public class SimpleNodeUtils {
         return new Node(mas[0], createNodeR(masReduced));
     }
 
+    @Override
     public Node testCicleMove(Node head) {
        /*   //человеческий последовательный перебор всех узлов циклом for
         for (Node start = head; start != null; start = start.getNext()) {
@@ -76,6 +83,7 @@ public class SimpleNodeUtils {
         return null;
     }
 
+    @Override
     @Deprecated
     @SuppressWarnings("Method compare two chain of Nodes")
     public boolean nodeEquals(Node node1, Node node2) {
@@ -110,6 +118,7 @@ public class SimpleNodeUtils {
      * @param removeParam
      * @return
      */
+    @Override
     @Deprecated
     public Node remove(Node head, Object removeParam) {
         //если список из одного елемента
@@ -144,6 +153,7 @@ public class SimpleNodeUtils {
 //
 //    }
 
+    @Override
     @Deprecated
     public Node remove2(Node head, Object removeParam) {
         //если список из одного елемента
@@ -177,6 +187,7 @@ public class SimpleNodeUtils {
      * @param removeParam
      * @return
      */
+    @Override
     public Node removeWithRecursion(Node head, Object removeParam) {
         //if one - element node
         if (null == head.getNext()) {
@@ -192,6 +203,7 @@ public class SimpleNodeUtils {
         return new Node(head.getValue(), removeWithRecursion(head.getNext(), removeParam));
     }
 
+    @Override
     public Node reverse(Node head) {
         if (null == head) {
             return null;
@@ -243,6 +255,7 @@ public class SimpleNodeUtils {
      * @param str
      * @return
      */
+    @Override
     public String stringReverse(String str) {
         if (str.isEmpty()) {
             return null;
@@ -259,6 +272,7 @@ public class SimpleNodeUtils {
      * @param str
      * @return
      */
+    @Override
     public String reverseStringRec(String str) {
         //cant return null - its fail the result stuing
         if (str.isEmpty()) {
@@ -276,6 +290,7 @@ public class SimpleNodeUtils {
      * @param str
      * @return
      */
+    @Override
     public String reverseStringRecWithChatAt(String str) {
         if (str.isEmpty()) {
             return "";
@@ -287,6 +302,7 @@ public class SimpleNodeUtils {
     }
 
 
+    @Override
     public Node reverseNode(Node head) {
         if (head.getNext() == null && null == head.getValue()) {
             throw new NullPointerException("Bad Node");
@@ -378,6 +394,7 @@ public class SimpleNodeUtils {
      * @param head
      * @return
      */
+    @Override
     public Node reverseNodeAlg(Node head) {
         if (null == head) {
             return null;
@@ -403,8 +420,14 @@ public class SimpleNodeUtils {
         return newHead; //возвращаем новую цепочку
     }
 
-
-    public Node reverseNodeRec(Node head) {
+    /**
+     * reverseNodeWithRecursion
+     * worked
+     * @param head
+     * @return
+     */
+    @Override
+    public Node reverseNodeWithRecursion(Node head) {
 
         if (head.getNext() == null) {
             return head;
@@ -416,11 +439,32 @@ public class SimpleNodeUtils {
         while (head.getNext() != null) {
             head = head.getNext();
         }
-        //savedHeadWithoutLast = this.removeWithRecursion(savedHead, head.getValue());
-        this.remove(savedHead, head);
+        savedHeadWithoutLast = this.removeWithRecursion(savedHead, head.getValue());
 
-        //return new Node(head.getValue(), reverseNodeRec(savedHeadWithoutLast));
-        return new Node(head.getValue(), reverseNodeRec(savedHead));
+        return new Node(head.getValue(), reverseNodeWithRecursion(savedHeadWithoutLast));
+
+    }
+
+    /**
+     * reverseWithRecursionAlt
+     * worked
+     *
+     * @param curr
+     * @param next
+     * @param prev
+     * @return
+     */
+    @Override
+    public Node reverseWithRecursionAlt(Node curr, Node next, Node prev) {
+
+        if (curr == null) return null;
+        if (curr.getNext() == null) return curr;
+        Node newHead = reverseWithRecursionAlt(curr.getNext(), null, null);
+
+        curr.getNext().setNext(curr);
+        curr.setNext(null);
+
+        return newHead;
     }
 }
 

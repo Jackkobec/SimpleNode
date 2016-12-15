@@ -11,13 +11,13 @@ public class TestSimpleNode {
         User user2 = new User("23", "Peta#2");
         User user3 = new User("24", "Kola#3");
 
-        SimpleNodeUtils snu = new SimpleNodeUtils();
+        ISimpleNodeUtils snu = new SimpleNodeUtils();
         Node testnode = snu.createNodeR("A", "B", "C", "D", "E");
         System.out.println(snu.toStringN(testnode));
 
 
 
-        Node node = snu.reverseNodeRec(testnode);
+        Node node = snu.reverseWithRecursionAlt(testnode, null, null);
         System.out.println("resilt " + snu.toStringN(node));
 
 
@@ -79,7 +79,7 @@ public class TestSimpleNode {
 //        testnode = snu.createNodeR("A", "B", "C", "D", "E");
 //        System.out.println(snu.toStringN2(testnode));
 //
-//        testnode = snu.reverseNodeRec(testnode);
+//        testnode = snu.reverseNodeWithRecursion(testnode);
 //
 //        System.out.println(snu.toStringN(testnode));
 //        System.out.println("=======");

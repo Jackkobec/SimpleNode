@@ -1,3 +1,4 @@
+import SimpleNode.ISimpleNodeUtils;
 import SimpleNode.Node;
 import SimpleNode.SimpleNodeUtils;
 import org.junit.Test;
@@ -12,7 +13,7 @@ public class TestSimpleNodeActions {
 
     @Test
     public void testRemove() {
-        SimpleNodeUtils snu = new SimpleNodeUtils();
+        ISimpleNodeUtils snu = new SimpleNodeUtils();
         Node TestNode = snu.createNodeR("A", "B", "C", "D", "E");
 
         //remove from 1st
@@ -58,7 +59,7 @@ public class TestSimpleNodeActions {
 
     @Test
     public void testReverse() {
-        SimpleNodeUtils snu = new SimpleNodeUtils();
+        ISimpleNodeUtils snu = new SimpleNodeUtils();
         Node TestNode = snu.createNodeR("A", "B", "C", "D", "E");
 
 
@@ -83,7 +84,7 @@ public class TestSimpleNodeActions {
 
     @Test
     public void testReverseString() {
-        SimpleNodeUtils snu = new SimpleNodeUtils();
+        ISimpleNodeUtils snu = new SimpleNodeUtils();
         String testStr = "A B C D E";
 
         //Test stringReverse
@@ -104,7 +105,7 @@ public class TestSimpleNodeActions {
 
     @Test
     public void testReverseAlg() {
-        SimpleNodeUtils snu = new SimpleNodeUtils();
+        ISimpleNodeUtils snu = new SimpleNodeUtils();
         Node TestNode = snu.createNodeR("A", "B", "C", "D", "E");
 
 
@@ -129,7 +130,7 @@ public class TestSimpleNodeActions {
 
     @Test
     public void testAddToHead() {
-        SimpleNodeUtils snu = new SimpleNodeUtils();
+        ISimpleNodeUtils snu = new SimpleNodeUtils();
         Node TestNode = snu.createNodeR("A", "B", "C", "D", "E");
         Node expected = snu.createNodeR("NewHead", "A", "B", "C", "D", "E");
         Node actual = snu.addToHead(TestNode, new Node("NewHead", null));
@@ -137,7 +138,7 @@ public class TestSimpleNodeActions {
     }
     @Test
     public void testAddToTail() {
-        SimpleNodeUtils snu = new SimpleNodeUtils();
+        ISimpleNodeUtils snu = new SimpleNodeUtils();
         Node TestNode = snu.createNodeR("A", "B", "C", "D", "E");
         Node expected = snu.createNodeR("A", "B", "C", "D", "E","NewHead");
         snu.addToTail(TestNode, new Node("NewHead", null));
